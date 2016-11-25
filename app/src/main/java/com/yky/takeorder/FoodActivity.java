@@ -12,8 +12,12 @@ import java.util.ArrayList;
 
 public class FoodActivity extends Activity {
 
-    public ArrayList<String> categorys=new ArrayList<>();
-    public String order="";
+    public ArrayList<String> categorys = new ArrayList<>();
+    public String order = "";
+    public String foodOrder = "";
+    public String entreeOrder = "";
+    public String comeFrom = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,12 +25,22 @@ public class FoodActivity extends Activity {
         // Set the content of the activity to use the activity_main.xml layout file
 
         setContentView(R.layout.activity_food);
-        //get order_list
-        SharedPreferences prefs = getSharedPreferences("food_order", MODE_PRIVATE);
-        order = prefs.getString("food_order", "");
-        TextView orderView = (TextView) findViewById(R.id.food_order);
-        orderView.setText(order);
+        //determine from
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            comeFrom = extras.getString("from");
+        }
+        //displays order_list
+        SharedPreferences prefs = getSharedPreferences("entree_order", MODE_PRIVATE);
+        entreeOrder = prefs.getString("entree_order", "");
+        TextView entreeView = (TextView) findViewById(R.id.entree_order);
+        entreeView.setText(entreeOrder);
 
+        prefs = getSharedPreferences("food_order", MODE_PRIVATE);
+        foodOrder = prefs.getString("food_order", "");
+        TextView foodView = (TextView) findViewById(R.id.food_order);
+        foodView.setText(foodOrder);
+        order = entreeOrder + foodOrder;
 
 
         TextView view1 = (TextView) findViewById(R.id.entree);
@@ -37,7 +51,7 @@ public class FoodActivity extends Activity {
             @Override
             public void onClick(View view) {
                 // Create a new intent to open the {@link SoftDrinkActivity}
-                Intent numbersIntent = new Intent(FoodActivity.this, MainMenu.class);
+                Intent numbersIntent = new Intent(FoodActivity.this, EntreeMenu.class);
 
                 // Start the new activity
                 startActivity(numbersIntent);
@@ -62,31 +76,50 @@ public class FoodActivity extends Activity {
                 startActivity(familyIntent);
                 finish();
 
+
             }
         });
 
 
     }
 
-
-    public void newOrder(View view){
-        SharedPreferences.Editor editor = getSharedPreferences("food_order",MODE_PRIVATE).edit();
-        editor.putString("food_order", "");
-        editor.commit();
-        TextView orderTextView = (TextView) findViewById(R.id.food_order);
+    public void resetFoodOrder() {
+        TextView orderTextView = (TextView) findViewById(R.id.entree_order);
+        orderTextView.setText("");
+        orderTextView = (TextView) findViewById(R.id.food_order);
         orderTextView.setText("");
     }
-    public void undo(View view){
-        String[] lines = order.split("\\n");
-        String s="";
-        for(int i=0;i<lines.length-1;i++){
-            s+=lines[i]+"\n";
-        }
-        SharedPreferences.Editor editor = getSharedPreferences("food_order",MODE_PRIVATE).edit();
-        editor.putString("order", s);
+
+    public void newOrder(View view) {
+        SharedPreferences.Editor editor = getSharedPreferences("entree_order", MODE_PRIVATE).edit();
+        editor.putString("entree_order", "");
         editor.commit();
-        TextView orderTextView = (TextView) findViewById(R.id.food_order);
-        orderTextView.setText(s);
+        editor = getSharedPreferences("food_order", MODE_PRIVATE).edit();
+        editor.putString("food_order", "");
+        editor.commit();
+        resetFoodOrder();
+    }
+
+    public void undo(View view) {
+        String[] lines = order.split("\\n");
+        String s = "";
+        for (int i = 0; i < lines.length - 1; i++) {
+            s += lines[i] + "\n";
+        }
+        if (comeFrom.equals("entree")) {
+            SharedPreferences.Editor editor = getSharedPreferences("entree_order", MODE_PRIVATE).edit();
+            editor.putString("entree_order", s);
+            editor.commit();
+            TextView orderTextView = (TextView) findViewById(R.id.entree_order);
+            orderTextView.setText(s);
+        } else {
+            SharedPreferences.Editor editor = getSharedPreferences("food_order", MODE_PRIVATE).edit();
+            editor.putString("food_order", s);
+            editor.commit();
+            TextView orderTextView = (TextView) findViewById(R.id.food_order);
+            orderTextView.setText(s);
+        }
+
     }
 
 

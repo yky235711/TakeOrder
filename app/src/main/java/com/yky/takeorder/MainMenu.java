@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static android.content.Context.MODE_PRIVATE;
+
 
 public class MainMenu extends ActivityGroup {
     public int quantity = 1;
@@ -33,16 +33,24 @@ public class MainMenu extends ActivityGroup {
     public String selectedItem="";
     public static List<String> selectedSuffixList = new ArrayList<>();
     public List<String> prefix = new ArrayList<>(Arrays.asList(
-            "Mongolian", "Hahn Premium Light", "Tooheys New", "Tooheys Old", "XXXX Gold", "VB", "Tooheys Extra Dry", "Crown Lager", "Anchor Steam", "Heineken", "Corona"
+            "Mongolian", "Honey", "Combination", "Satay", "Peking","BlackBean", "Szechuan", "Lemon", "Oyster", "Curry","SweetnSour",
+            "SaltnPepper","GarlicButter","Garlic","Pineapple","SaltyFish","Ginger",
+            "Roast","Steam","DeepFried","PanFried","StirFried","Stuffed","Teriyaki",
+            "KungPo","SweetVinegar","HoneyPepper","Small","Large"
+            ,"CrispySkin"
     ));
     public List<String> item = new ArrayList<>(Arrays.asList(
-            "Beef", "Chicken", "KingPrawn", "Lamb", "Pork", "Duck", "Squid", "Crown Lager", "Anchor Steam", "Heineken", "Corona"
+            "Beef/Steak", "Chicken", "KingPrawn", "Lamb", "Pork", "Duck", "Squid", "BeefFilletCube", "Duo(KPnSquid)", "Scallops","FishFillet",
+            "WhiteBait","Vegetable","Mushroom","LobsterTail","SoftShellCrab","WholeFlouder",
+            "ShreddedCrispyBeef","ShreddedBeef","Special","BoiledRice","Singapore","Fujian","Soy"
+
     ));
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        java.util.Collections.sort(prefix);
         selectedSuffixList = new ArrayList<>();
         ArrayAdapter<String> prefixAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, prefix) {
             @Override
@@ -52,7 +60,7 @@ public class MainMenu extends ActivityGroup {
 
                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                 // Set the text size 25 dip for ListView each item
-                tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
                 // Return the view
                 return view;
             }
@@ -67,7 +75,7 @@ public class MainMenu extends ActivityGroup {
 
                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                 // Set the text size 25 dip for ListView each item
-                tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
                 // Return the view
                 return view;
             }
@@ -109,10 +117,10 @@ public class MainMenu extends ActivityGroup {
 
         TabHost.TabSpec tab1 = tabHost.newTabSpec("Tab1");
         TabHost.TabSpec tab2 = tabHost.newTabSpec("Tab2");
-        tab1.setIndicator("Tab1");
+        tab1.setIndicator("+");
         //tab1.setContent(R.id.activity_suffix_tab1);
         tab1.setContent(new Intent(this, SuffixTab1Activity.class));
-        tab2.setIndicator("Tab2");
+        tab2.setIndicator("-");
         tab2.setContent(new Intent(this, SuffixTab2Activity.class));
 
         /** Add the tabs  to the TabHost to display. */
@@ -124,11 +132,12 @@ public class MainMenu extends ActivityGroup {
     public void submitOk(View view) {
         String selectedSuffix = "";
         for (int i = 0; i < selectedSuffixList.size(); i++) {
-            selectedSuffix += "+"+selectedSuffixList.get(i) + " ";
+            selectedSuffix += selectedSuffixList.get(i) + " ";
         }
         String q = "  x" + quantity;
         String thisOrder = selectedPrefix +" "+ selectedItem + selectedSuffix + q + "\n";
         Intent mainIntent = new Intent(this, FoodActivity.class);
+        mainIntent.putExtra("from","main");
         if(!selectedItem.isEmpty()){
             SharedPreferences prefs = getSharedPreferences("food_order", MODE_PRIVATE);
             String order = prefs.getString("food_order", "");

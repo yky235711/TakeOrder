@@ -23,7 +23,8 @@ public class SuffixTab1Activity extends Activity {
 
 
     public List<String> suffix=new ArrayList<>(Arrays.asList(
-            "SizPlate","Chilli","Cashew","Vegetable"
+            "SizPlate","Cashew","Vegetable","Mushroom","Omelette","Noodle",
+            "Chilli","Brocolli"
     ));
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class SuffixTab1Activity extends Activity {
 
                 TextView tv = (TextView) view.findViewById(android.R.id.text1);
                 // Set the text size 25 dip for ListView each item
-                tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10);
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
                 // Return the view
                 return view;
             }
@@ -53,7 +54,7 @@ public class SuffixTab1Activity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                String addSuffix=suffix.get(i);
+                String addSuffix="+"+suffix.get(i);
                 if(MainMenu.selectedSuffixList.contains(addSuffix)){
                     MainMenu.selectedSuffixList.remove(addSuffix);
                 }else{

@@ -14,12 +14,30 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="350dp"
         >
-        <TextView
-            android:id="@+id/food_order"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/entree_order"
+                android:textSize="15dp"
+                android:layout_marginBottom="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent" />
+
+            <View android:background="@color/category_numbers"
+                android:layout_width = "match_parent"
+                android:layout_height="1dp"/>
+            <TextView
+                android:id="@+id/food_order"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent" />
+
+        </LinearLayout>
+
 
     </ScrollView>
     <RelativeLayout
@@ -27,7 +45,8 @@
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/x"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
+            android:layout_marginRight="20dp"
             android:layout_height="wrap_content"
             android:text="X"
             android:layout_toLeftOf="@+id/undo"
@@ -46,37 +65,12 @@
         android:background="@color/category_numbers"
         android:text="Entree"
         />
-    <TextView
-        android:id="@+id/soup"
-        style="@style/CategoryStyle"
-        android:background="@color/category_whitewine"
-        android:text="Soup" />
+
     <TextView
         android:id="@+id/main"
         style="@style/CategoryStyle"
         android:background="@color/category_redwine"
         android:text="Main" />
-
-    <TextView
-        android:id="@+id/veg"
-        style="@style/CategoryStyle"
-        android:background="@color/category_beer"
-        android:text="Vegetable and Tofu"
-        />
-
-    <TextView
-        android:id="@+id/rice"
-        style="@style/CategoryStyle"
-        android:background="@color/category_spirits"
-        android:text="Rice and Noodle"
-        />
-
-    <TextView
-        android:id="@+id/om"
-        style="@style/CategoryStyle"
-        android:background="@color/category_omelete"
-        android:text="Omelete"
-        />
 
 
 </LinearLayout>

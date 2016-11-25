@@ -15,12 +15,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FoodActivity" android:theme="@android:style/Theme.NoTitleBar" />
-        <activity android:name=".DrinkActivity" android:theme="@android:style/Theme.NoTitleBar" />
-        <activity android:name=".MainMenu" android:theme="@android:style/Theme.NoTitleBar" />
-        <activity android:name=".SuffixTab1Activity" android:theme="@android:style/Theme.NoTitleBar"/>
-        <activity android:name=".SuffixTab2Activity" android:theme="@android:style/Theme.NoTitleBar">
-        </activity>
+        <activity
+            android:name=".FoodActivity"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".DrinkActivity"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".MainMenu"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".SuffixTab1Activity"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".SuffixTab2Activity"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity android:name=".EntreeMenu" android:theme="@android:style/Theme.NoTitleBar" />
+        <activity android:name=".EntreeSuffixTab1Activity" />
+        <activity android:name=".EntreeSuffixTab2Activity" />
+        <activity android:name=".SoftDrinkMenu" />
+        <activity android:name=".BeerMenu" />
+        <activity android:name=".RedMenu" />
+        <activity android:name=".WhiteMenu" />
+        <activity android:name=".SmallMenu" />
+        <activity android:name=".DrinkQuantityActivity" />
+        <activity android:name=".SpiritsMenu"></activity>
     </application>
 
 </manifest>
