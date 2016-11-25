@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TakeOrder 1.0</string>
+
+    <string name="category_redwine">RedWine</string>
+
+    <string name="category_whitewine">WhiteWine</string>
+
+    <string name="category_softdrink">Softdrink</string>
+
+    <string name="category_small">SmallBottles</string>
+
+    <string name="category_spirits">Spirits</string>
+
+    <string name="category_beer">Beer</string>
+
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primary_color">#2c3463</color>
+
+    <color name="primary_dark_color">#080808</color>
+
+    <color name="tan_background">#FFF7DA</color>
+
+    <color name="category_numbers">#FD8E09</color>
+
+    <color name="category_redwine">#ed0c04</color>
+
+    <color name="category_whitewine">#bfbabf</color>
+
+    <color name="category_small">#16AFCA</color>
+
+    <color name="category_spirits">#2F1D1A</color>
+
+    <color name="category_beer">#079613</color>
+
+    <color name="category_omelete">#f2d70b</color>
+
+</resources>
