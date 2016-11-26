@@ -12,8 +12,7 @@ import java.util.ArrayList;
 
 public class FoodActivity extends Activity {
 
-    public ArrayList<String> categorys = new ArrayList<>();
-    public String order = "";
+    //public String order = "";
     public String foodOrder = "";
     public String entreeOrder = "";
     public String comeFrom = "";
@@ -29,6 +28,8 @@ public class FoodActivity extends Activity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             comeFrom = extras.getString("from");
+        }else{
+            comeFrom="";
         }
         //displays order_list
         SharedPreferences prefs = getSharedPreferences("entree_order", MODE_PRIVATE);
@@ -40,7 +41,7 @@ public class FoodActivity extends Activity {
         foodOrder = prefs.getString("food_order", "");
         TextView foodView = (TextView) findViewById(R.id.food_order);
         foodView.setText(foodOrder);
-        order = entreeOrder + foodOrder;
+
 
 
         TextView view1 = (TextView) findViewById(R.id.entree);
@@ -100,22 +101,30 @@ public class FoodActivity extends Activity {
         resetFoodOrder();
     }
 
-    public void undo(View view) {
-        String[] lines = order.split("\\n");
-        String s = "";
+    public String removeLastLine(String s){
+        String[] lines = s.split("\\n");
+        String t = "";
         for (int i = 0; i < lines.length - 1; i++) {
-            s += lines[i] + "\n";
+            t += lines[i] + "\n";
         }
-        if (comeFrom.equals("entree")) {
+        return t;
+    }
+    public void undo(View view) {
+
+        if (foodOrder.isEmpty() || comeFrom.equals("entree") && !entreeOrder.isEmpty()) {
+            String s=removeLastLine(entreeOrder);
             SharedPreferences.Editor editor = getSharedPreferences("entree_order", MODE_PRIVATE).edit();
             editor.putString("entree_order", s);
             editor.commit();
+            entreeOrder=s;
             TextView orderTextView = (TextView) findViewById(R.id.entree_order);
             orderTextView.setText(s);
         } else {
+            String s=removeLastLine(foodOrder);
             SharedPreferences.Editor editor = getSharedPreferences("food_order", MODE_PRIVATE).edit();
             editor.putString("food_order", s);
             editor.commit();
+            foodOrder=s;
             TextView orderTextView = (TextView) findViewById(R.id.food_order);
             orderTextView.setText(s);
         }

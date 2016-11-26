@@ -19,7 +19,7 @@ import java.util.List;
 public class SuffixTab2Activity extends Activity {
 
     public List<String> suffix=new ArrayList<>(Arrays.asList(
-            "Pork","Beef","Vegetable","Mushroom","Onion","Egg",
+            "SizPlate","Pork","Beef","Vegetable","Mushroom","Onion","Egg",
             "Chilli"
     ));
     @Override

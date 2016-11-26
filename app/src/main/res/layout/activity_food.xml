@@ -45,16 +45,16 @@
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/x"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/square_box"
             android:layout_marginRight="20dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/square_box"
             android:text="X"
             android:layout_toLeftOf="@+id/undo"
             android:onClick="newOrder"/>
         <Button
             android:id="@+id/undo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/square_box"
+            android:layout_height="@dimen/square_box"
             android:text="undo"
             android:onClick="undo"
             android:layout_alignParentRight="true"/>

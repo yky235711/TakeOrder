@@ -33,16 +33,16 @@ public class MainMenu extends ActivityGroup {
     public String selectedItem="";
     public static List<String> selectedSuffixList = new ArrayList<>();
     public List<String> prefix = new ArrayList<>(Arrays.asList(
-            "Mongolian", "Honey", "Combination", "Satay", "Peking","BlackBean", "Szechuan", "Lemon", "Oyster", "Curry","SweetnSour",
-            "SaltnPepper","GarlicButter","Garlic","Pineapple","SaltyFish","Ginger",
-            "Roast","Steam","DeepFried","PanFried","StirFried","Stuffed","Teriyaki",
-            "KungPo","SweetVinegar","HoneyPepper","Small","Large"
-            ,"CrispySkin"
+            "Mongolian", "Honey", "Combination", "Satay", "Peking","Black Bean", "Szechuan", "Lemon", "Oyster", "Curry","Sweet Sour",
+            "Salt Pepper","Garlic Butter","Garlic","Pine apple","Salty Fish","Ginger",
+            "Roast","Steam","Deep Fried","Pan Fried","Stir Fried","Stuffed","Teriyaki","Fujian",
+            "KungPo","Sweet Vinegar","Honey Pepper","Small","Large","Seafood","Minced Beef","Special","Vegetarian"
+            ,"Crispy Skin"
     ));
     public List<String> item = new ArrayList<>(Arrays.asList(
-            "Beef/Steak", "Chicken", "KingPrawn", "Lamb", "Pork", "Duck", "Squid", "BeefFilletCube", "Duo(KPnSquid)", "Scallops","FishFillet",
-            "WhiteBait","Vegetable","Mushroom","LobsterTail","SoftShellCrab","WholeFlouder",
-            "ShreddedCrispyBeef","ShreddedBeef","Special","BoiledRice","Singapore","Fujian","Soy"
+            "Beef Steak", "Chicken", "King Prawn", "Lamb", "Pork","Fried Rice", "Duck", "Squid", "Beef Cube", "Duo", "Scallops","Fish Fillet",
+            "White Bait","Vegetable","Mushroom","Lobster Tail","SoftShell Crab","Whole Flouder","Combination",
+            "Shredded CrispyBeef","Shredded Beef","Special","Boiled Rice","Singapore","Soy"
 
     ));
 
@@ -132,7 +132,7 @@ public class MainMenu extends ActivityGroup {
     public void submitOk(View view) {
         String selectedSuffix = "";
         for (int i = 0; i < selectedSuffixList.size(); i++) {
-            selectedSuffix += selectedSuffixList.get(i) + " ";
+            selectedSuffix += selectedSuffixList.get(i);
         }
         String q = "  x" + quantity;
         String thisOrder = selectedPrefix +" "+ selectedItem + selectedSuffix + q + "\n";

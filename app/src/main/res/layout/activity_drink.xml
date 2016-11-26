@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.yky.takeorder.DrinkActivity"
-    android:background="@color/tan_background"
+    android:background="@color/primary_color"
     >
 
 
@@ -27,17 +27,17 @@
 
         <Button
             android:id="@+id/x"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/square_box"
             android:layout_marginRight="20dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/square_box"
             android:layout_toLeftOf="@+id/undo"
             android:onClick="newOrder"
             android:text="X" />
 
         <Button
             android:id="@+id/undo"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/square_box"
+            android:layout_height="@dimen/square_box"
             android:layout_alignParentRight="true"
             android:onClick="undo"
             android:text="undo" />
